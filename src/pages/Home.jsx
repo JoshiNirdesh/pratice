@@ -1,14 +1,17 @@
-import React from 'react'
-import Product from '../components/Product'
-import Navbar from '../components/Navbar'
+
+import Navbar from "../components/Navbar";
+import Categories from "../components/Categories";
+import ProductCard from "../components/ProductCard";
+import BestSeller from "../components/BestSeller";
 
 const Home = () => {
   return (
     <div>
-      <Navbar/>
-      <Product/>
+      <Navbar />
+      <Categories />
+      <BestSeller/>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

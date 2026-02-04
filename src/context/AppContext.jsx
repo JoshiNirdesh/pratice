@@ -1,11 +1,21 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
+import { categories, dummyProducts } from "../assets/greencart_assets/assets";
 
 export const AppContext = createContext();
 
 
 export const AppProvider = ({children})=>{
+    const [products,setProducts]=useState([]);
+    const[category,setCategory]=useState([])
 
-    const values = {}
+    useEffect(()=>{
+        setProducts(dummyProducts)
+    },[])
+    useEffect(()=>{
+        setCategory(categories)
+    },[])
+
+    const values = {products,category}
     return(
         <AppContext.Provider value={values}>
                 {children}
