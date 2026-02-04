@@ -1,12 +1,8 @@
-import React from 'react'
+import  { AppContext } from "../context/AppContext";
 
 const Product = () => {
-    
-  return (
-    <div>
-      
-    </div>
-  )
-}
 
-export default Product
+  return <div></div>;
+};
+
+export default Product;
