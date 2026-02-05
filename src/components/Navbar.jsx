@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="mt-5">  
       <div className="flex items-center justify-between">
-        <p>Logo</p>
+        <Link to="/">Logo</Link>
         <ul className="list-none flex gap-20 cursor-pointer"> 
           <li>Home</li>
           <li>Product</li>
