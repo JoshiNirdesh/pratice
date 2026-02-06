@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 Link;
 const ProductCard = ({ product }) => {
   const [count, setCount] = useState(0);
+  const {addToCart,removeFromCart,cartItems}=useContext(AppContext)
+  const navigate = useNavigate()
 
   return (
     <div className="mt-8">
-      <Link to={`/product/${product._id}`}>
         <div className="border w-60 px-6 py-4 mt-5rounded border-gray-400/10 outline-none shadow-lg">
-          <img src={product.image[0]} alt="" className="cursor-pointer" />
+          <img src={product.image[0]} alt="" className="cursor-pointer" onClick={()=>navigate(`/product/${product._id}`)} />
           <div>
             <p className="text-gray-400 font-medium">{product.name}</p>
             <p className="text-gray-400">{product.category}</p>
@@ -19,23 +21,22 @@ const ProductCard = ({ product }) => {
               <p className="text-green-500">${product.offerPrice}</p>
               <p className="text-sm line-through"> ${product.price}</p>
             </div>
-            {count == 0 ? (
+            {!cartItems[product._id] ? (
               <button
                 className="border px-2 bg-green-500 text-white rounded cursor-pointer text-sm"
-                onClick={() => setCount((prevCount) => prevCount + 1)}
+                onClick={() =>addToCart(product._id)}
               >
                 Add To Cart
               </button>
             ) : (
               <div className="flex px-2 gap-3 border bg-green-500 outline-none rounded border-green-500 text-white cursor-pointer">
-                <p onClick={() => setCount((prevCount) => prevCount - 1)}>-</p>
-                <p className="gap-5">{count}</p>
-                <p onClick={() => setCount((prevCount) => prevCount + 1)}> +</p>
+                <p onClick={() => removeFromCart(product._id)}>-</p>
+                <p className="gap-5">{cartItems[product._id]}</p>
+                <p onClick={() => addToCart(product._id)}> +</p>
               </div>
             )}
           </div>
         </div>
-      </Link>
     </div>
   );
 };
