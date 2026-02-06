@@ -9,6 +9,7 @@ export const AppProvider = ({children})=>{
     const[category,setCategory]=useState([])
     const [searchQuery,setSearchQuery]=useState("")
     const [cartItems,setCartItems]=useState([]);
+    const[showUserLogin,setShowUserLogin]=useState(false)
 
     useEffect(()=>{
         setProducts(dummyProducts)
@@ -44,7 +45,7 @@ export const AppProvider = ({children})=>{
         }
         setCartItems[cartData]
     }
-    const values = {products,category,searchQuery,setSearchQuery,addToCart,getCartCount,removeFromCart,cartItems}
+    const values = {products,category,searchQuery,setSearchQuery,addToCart,getCartCount,removeFromCart,cartItems,showUserLogin,setShowUserLogin}
     return(
         <AppContext.Provider value={values}>
                 {children}
