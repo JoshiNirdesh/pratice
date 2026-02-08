@@ -1,15 +1,13 @@
-const express = require("express");
-const dotenv = require("dotenv");
+import express from "express";
+import dotenv from "dotenv";
+import connectDB from "./config/dbconfig.js";
 
 dotenv.config();
 const app = express();
 
-const port = process.env.PORT
+connectDB();
+const port = process.env.PORT;
 
-app.listen(port,()=>{
-    console.log(`Listening on port ${port}`)
-})
-
-
-
-
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
