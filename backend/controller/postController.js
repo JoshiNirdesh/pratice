@@ -9,7 +9,7 @@ const createPostController = async (req, res) => {
         message: "All field are required",
       });
     }
-    const post = await postModel.create({ title, isCompleted });
+    const post = await postModel.create({ title, isCompleted,user:req.userId });
     res.status(200).send({
       success: true,
       message: "Post Created",

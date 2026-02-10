@@ -1,17 +1,23 @@
 const mongoose = require("mongoose");
 
-
-const postSchema = mongoose.Schema({
-    title:{
-        type:String,
-        required:true
+const postSchema = mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
     },
-    isCompleted:{
-        type:String,
-        required:true,
-        default:false
-    }
-},{timestamps:true});
+    isCompleted: {
+      type: String,
+      required: true,
+      default: false,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
+  },
+  { timestamps: true },
+);
 
-const postModel = mongoose.model("post",postSchema);
-module.exports = postModel
+const postModel = mongoose.model("post", postSchema);
+module.exports = postModel;
