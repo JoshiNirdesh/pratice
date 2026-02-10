@@ -40,7 +40,7 @@ const getAllPost = async (req, res) => {
 };
 const updatePostController = async (req, res) => {
   try {
-    const id = req.params.id;
+    const {id }= req.params;
 
     if (!id) {
       return res.status(400).send({
@@ -84,5 +84,27 @@ const updatePostController = async (req, res) => {
     });
   }
 };
+const deletePostController = async(req,res)=>{
+    const {id}=req.params;
+    try {
+        if(!id){
+            return res.status(400).send({
+                success:false,
+                message:"Id is required"
+            })
+        }
+        await postModel.findByIdAndDelete(id);
+        res.status(200).send({
+            success:true,
+            message:"Deleted"
+        })
+    } catch (error) {
+        res.status(500).send({
+      success: false,
+      message: "delete post error",
+      error: error.message,
+    }); 
+    }
+}
 
-module.exports = { createPostController, getAllPost, updatePostController };
+module.exports = { createPostController, getAllPost, updatePostController,deletePostController };
