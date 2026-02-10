@@ -23,4 +23,20 @@ const createPostController = async (req,res)=>{
         })
     }
 }
-module.exports = {createPostController}
+const getAllPost = async(req,res)=>{
+    try {
+        const post = await postModel.find();
+        res.status(200).send({
+            success:true,
+            post
+        })
+    } catch (error) {
+        res.status(500).send({
+            success:false,
+            message:"get all post error",
+            error:error.message
+        })
+        
+    }
+}
+module.exports = {createPostController,getAllPost}
