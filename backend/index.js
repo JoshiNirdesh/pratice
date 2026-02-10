@@ -12,7 +12,7 @@ app.use(express.json());
 app.get("/",(req,res)=>{
     res.send("This is home")
 })
-app.use("/api/post",require("./router/postRoutes"))
+app.use("/api/post/",require("./router/postRoutes"))
 
 const port = process.env.PORT
 app.listen(port,()=>{
