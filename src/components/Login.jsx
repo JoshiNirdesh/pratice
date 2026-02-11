@@ -1,48 +1,29 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import React, { useState } from 'react'
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate()
-  const handleClick = async () => {
-    try {
-      const data = { email, password };
-      const res = await axios.post("http://localhost:4000/api/user/login",data);
-      console.log(res.data.message);
-      localStorage.setItem("user",JSON.stringify(res.data));
-      navigate("/home")
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("password");
 
-    } catch (error) {
-      console.log(error);
+    const handleClick = async ()=>{
+       try {
+         const data = {email,password};
+        const res = await axios.post("http://localhost:4000/api/login",data);
+        localStorage.setItem("user",JSON.stringify(res.data))
+       } catch (error) {
+        console.log("login api");
+       }
     }
-  };
+    
   return (
     <div>
-      <div>
-        <label htmlFor="">Email</label>
-        <input
-          type="email"
-          className="border"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <label htmlFor="">Password</label>
-        <input
-          type="password"
-          className="border"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <button className="border" onClick={handleClick}>
-          Submit
-        </button>
-      </div>
+      <label htmlFor="">Email</label><br />
+      <input type="email" placeholder='enter email' className='border' value={email} onChange={(e)=>setEmail(e.target.value)}/><br />
+      <label htmlFor="">password</label><br />
+      <input type="password" placeholder='enter password' className='border' value={password} onChange={(e)=>setPassword(e.target.value)} /><br />
+      <button className='border cursor-pointer' onClick={handleClick}>Submit</button>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
