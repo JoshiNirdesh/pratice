@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [email,setEmail]=useState("");
@@ -22,6 +23,7 @@ const Login = () => {
       <label htmlFor="">password</label><br />
       <input type="password" placeholder='enter password' className='border' value={password} onChange={(e)=>setPassword(e.target.value)} /><br />
       <button className='border cursor-pointer' onClick={handleClick}>Submit</button>
+      <Link to="/register" className='border cursor-pointer'>Register</Link>
     </div>
   )
 }
