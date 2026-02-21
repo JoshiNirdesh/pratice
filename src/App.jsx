@@ -4,6 +4,7 @@ import Counter from "./Components/Counter";
 import Fetch from "./Components/Fetch";
 import Mode from "./Components/Mode";
 import ProfileCard from "./Components/ProfileCard";
+import Todo from "./Components/Todo";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <CharacterCount />
       <Fetch />
       <Auth />
+      <Todo />
     </div>
   );
 };
