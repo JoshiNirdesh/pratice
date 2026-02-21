@@ -1,3 +1,4 @@
+import Auth from "./Components/Auth";
 import CharacterCount from "./Components/CharacterCount";
 import Counter from "./Components/Counter";
 import Fetch from "./Components/Fetch";
@@ -12,6 +13,7 @@ const App = () => {
       <Mode />
       <CharacterCount />
       <Fetch />
+      <Auth />
     </div>
   );
 };

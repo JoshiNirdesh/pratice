@@ -21,7 +21,6 @@ const Fetch = () => {
       console.log(error);
       setLoading(false);
     }
-    console.log(post);
   };
   if (loading) {
     return <div>Loading</div>;
