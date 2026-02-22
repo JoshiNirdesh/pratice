@@ -3,6 +3,7 @@ import CharacterCount from "./Components/CharacterCount";
 import Counter from "./Components/Counter";
 import Fetch from "./Components/Fetch";
 import Form from "./Components/Form";
+import Memo from "./Components/Memo";
 import Mode from "./Components/Mode";
 import ProfileCard from "./Components/ProfileCard";
 import Todo from "./Components/Todo";
@@ -20,6 +21,7 @@ const App = () => {
       <Todo />
       <Form />
       <Todonew />
+      <Memo />
     </div>
   );
 };

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Todonew = () => {
   const [input, setInput] = useState("");
   const [todo, setTodo] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [query, setQuery] = useState("");
 
   const handleAdd = () => {
     const task = {
@@ -13,7 +14,17 @@ const Todonew = () => {
     };
     setTodo([...todo, task]);
   };
-  console.log(filter);
+
+  useEffect(() => {
+    const savedTodo = localStorage.getItem("todo");
+    if (savedTodo) {
+      setTodo(JSON.parse(savedTodo));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todo", JSON.stringify(todo));
+  }, [todo]);
 
   const handleDelete = (id) => {
     setTodo(todo.filter((task) => task.id !== id));
@@ -25,11 +36,15 @@ const Todonew = () => {
       ),
     );
   };
-  const todoFilter = todo.filter((task) => {
-    if (filter === "completed") return task.completed;
-    if (filter === "pending") return !task.completed;
-    return todo;
-  });
+  const todoFilter = todo
+    .filter((task) => {
+      if (filter === "completed") return task.completed;
+      if (filter === "pending") return !task.completed;
+
+      return true;
+    })
+    .filter((task) => task.text.toLowerCase().includes(query.toLowerCase()));
+
   return (
     <div className="p-20">
       <div className="flex  gap-10">
@@ -57,6 +72,13 @@ const Todonew = () => {
           <option value="completed">Completed</option>
           <option value="pending">Pending</option>
         </select>
+        <input
+          type="text"
+          placeholder="Search ..."
+          className="border px-4"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </div>
       <div>
         {todoFilter.map((task) => (
