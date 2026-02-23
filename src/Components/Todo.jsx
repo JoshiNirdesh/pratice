@@ -27,7 +27,7 @@ const Todo = () => {
     if(filter === "pending") return !task.completed;
     return true
   })
-  console.log(todo);
+//   console.log(todo);
   return (
     <div className="m-20 p-20">
       <div>

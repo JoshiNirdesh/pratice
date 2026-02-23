@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 
 const Count = React.memo(({ count }) => {
-  console.log("Render");
+//   console.log("Render");
   return <div>{count}</div>;
 });
 const Memo = () => {
@@ -9,7 +9,7 @@ const Memo = () => {
   const [text, setText] = useState("");
 
   const doubleCount = useMemo(() => {
-    console.log("Double count");
+    // console.log("Double count");
     return count * 2;
   }, [count]);
   return (

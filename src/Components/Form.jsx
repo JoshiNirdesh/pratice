@@ -5,7 +5,7 @@ const Form = () => {
     email: "",
     password: "",
   });
-  console.log(formData);
+//   console.log(formData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,7 +20,7 @@ const Form = () => {
     }
   };
   const handleSubmit = (e) => {
-    
+
   };
   return (
     <div>
