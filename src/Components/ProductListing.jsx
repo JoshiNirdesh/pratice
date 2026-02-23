@@ -5,6 +5,7 @@ const ProductListing = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("all");
   const [sort, setSort] = useState("asc");
+  const [query, setQuery] = useState("");
 
   const fetchProduct = async () => {
     const res = await fetch("https://fakestoreapi.com/products");
@@ -16,11 +17,11 @@ const ProductListing = () => {
     fetchProduct();
   }, []);
   console.log(category);
-
-  const filterProducts =
-    category == "all"
-      ? products
-      : products.filter((products) => products.category === category);
+  const filterProducts = products
+    .filter((product) => category === "all" || product.category === category)
+    .filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase()),
+    );
 
   const priceSort = [...filterProducts].sort((a, b) =>
     sort === "asc" ? a.price - b.price : b.price - a.price,
@@ -51,6 +52,13 @@ const ProductListing = () => {
           <option value="asc">Low → High</option>
           <option value="desc">High → Low</option>
         </select>
+        <input
+          type="text"
+          placeholder="Search....."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="border p-2 ml-2"
+        />
       </div>
       <div className="grid grid-cols-5 px-12 py-10">
         {priceSort.map((product, index) => (
