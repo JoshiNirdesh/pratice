@@ -5,6 +5,7 @@ import Fetch from "./Components/Fetch";
 import Form from "./Components/Form";
 import Memo from "./Components/Memo";
 import Mode from "./Components/Mode";
+import ProductListing from "./Components/ProductListing";
 import ProfileCard from "./Components/ProfileCard";
 import Todo from "./Components/Todo";
 import Todonew from "./Components/Todonew";
@@ -22,6 +23,7 @@ const App = () => {
       <Form />
       <Todonew />
       <Memo />
+      <ProductListing />
     </div>
   );
 };
